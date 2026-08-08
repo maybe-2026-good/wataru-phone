@@ -107,7 +107,7 @@ body {
 
 .swipe-area {
   position: absolute;
-  bottom: 35px;
+  bottom: 100px;
   width: 100%;
   text-align: center;
   font-size: 13px;
