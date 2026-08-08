@@ -694,7 +694,22 @@ body {
   background: #aee6a3;
 }
 
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
 
+.message-time {
+  font-size: 10px;
+  color: #888;
+  white-space: nowrap;
+  margin-bottom: 3px;
+}
+
+.message.sent .message-row {
+  justify-content: flex-end;
+}
 
 /* =====================
    メモ
