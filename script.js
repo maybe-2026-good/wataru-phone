@@ -542,25 +542,41 @@ function openConversation(person) {
 
       <div class="message received">
 
-        <div class="message-name">
-          りんたろう
-        </div>
+  <div class="message-name">
+    りんたろう
+  </div>
 
-        <div class="message-bubble">
-          あの車の件なんだけど、<br>
-          誰にも言ってないよ。
-        </div>
+  <div class="message-row">
 
-      </div>
+    <div class="message-bubble">
+      あの車の件なんだけど、<br>
+      誰にも言ってないよ。
+    </div>
+
+    <div class="message-time">
+      18:42
+    </div>
+
+  </div>
+
+</div>
 
 
       <div class="message sent">
 
-        <div class="message-bubble">
-          本当に？
-        </div>
+  <div class="message-row">
 
-      </div>
+    <div class="message-time">
+      18:45
+    </div>
+
+    <div class="message-bubble">
+      本当に？
+    </div>
+
+  </div>
+
+</div>
 
 
       <div class="message received">
