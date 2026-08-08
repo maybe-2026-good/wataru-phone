@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
   <title>Wataru's iPhone</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
 <div class="phone">
 
-  <!-- ロック画面 -->
+
+  <!-- =====================
+       ロック画面
+  ====================== -->
+
   <div id="lockScreen" class="screen lock-screen">
 
     <div class="status-bar">
@@ -19,142 +31,349 @@
       <span>●●●　📶　🔋</span>
     </div>
 
-    <div class="lock-content">
-      <div class="lock-icon">🔒</div>
 
-      <div id="time" class="time">23:47</div>
-      <div id="date" class="date">8月9日 日曜日</div>
+    <div class="lock-content">
+
+      <div class="lock-icon">
+        🔒
+      </div>
+
+      <div id="time" class="time">
+        23:47
+      </div>
+
+      <div id="date" class="date">
+        8月9日 日曜日
+      </div>
+
 
       <div class="notification">
-        <div class="notification-title">💬 メッセージ</div>
+
+        <div class="notification-title">
+          💬 メッセージ
+        </div>
+
         <div class="notification-text">
           新しいメッセージがあります
         </div>
+
       </div>
+
     </div>
 
-    <div class="swipe-area">
-      <div class="swipe-arrow">↑</div>
-      <div>上にスワイプしてロック解除</div>
+
+    <div
+      class="swipe-area"
+      onclick="showPasscode()"
+    >
+
+      <div class="swipe-arrow">
+        ↑
+      </div>
+
+      <div>
+        上にスワイプしてロック解除
+      </div>
+
     </div>
 
   </div>
 
 
-  <!-- パスコード画面 -->
-  <div id="passcodeScreen" class="screen passcode-screen hidden">
+
+  <!-- =====================
+       パスコード画面
+  ====================== -->
+
+  <div
+    id="passcodeScreen"
+    class="screen passcode-screen hidden"
+  >
 
     <div class="passcode-top">
-      <div class="small-lock">🔒</div>
-      <div>パスコードを入力</div>
 
-     <div class="forgot-password">
-     パスワードを忘れた場合：<br>
-     <span>りんたろうとの思い出の日。</span>
-     </div>
-
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="small-lock">
+        🔒
       </div>
 
+      <div>
+        パスコードを入力
+      </div>
+
+
+      <div class="forgot-password">
+
+        パスワードを忘れた場合：<br>
+
+        <span>
+          りんたろうとの思い出の日。
+        </span>
+
+      </div>
+
+
+      <div class="dots">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+
       <div id="errorMessage"></div>
+
     </div>
+
+
 
     <div class="keypad">
 
-      <button onclick="pressKey('1')">1</button>
-      <button onclick="pressKey('2')">2</button>
-      <button onclick="pressKey('3')">3</button>
+      <button onclick="pressKey('1')">
+        1
+      </button>
 
-      <button onclick="pressKey('4')">4</button>
-      <button onclick="pressKey('5')">5</button>
-      <button onclick="pressKey('6')">6</button>
+      <button onclick="pressKey('2')">
+        2
+      </button>
 
-      <button onclick="pressKey('7')">7</button>
-      <button onclick="pressKey('8')">8</button>
-      <button onclick="pressKey('9')">9</button>
+      <button onclick="pressKey('3')">
+        3
+      </button>
+
+
+      <button onclick="pressKey('4')">
+        4
+      </button>
+
+      <button onclick="pressKey('5')">
+        5
+      </button>
+
+      <button onclick="pressKey('6')">
+        6
+      </button>
+
+
+      <button onclick="pressKey('7')">
+        7
+      </button>
+
+      <button onclick="pressKey('8')">
+        8
+      </button>
+
+      <button onclick="pressKey('9')">
+        9
+      </button>
+
 
       <div></div>
-      <button onclick="pressKey('0')">0</button>
-      <button onclick="deleteKey()">⌫</button>
+
+      <button onclick="pressKey('0')">
+        0
+      </button>
+
+      <button onclick="deleteKey()">
+        ⌫
+      </button>
 
     </div>
 
-    <button class="cancel" onclick="backToLock()">キャンセル</button>
+
+    <button
+      class="cancel"
+      onclick="backToLock()"
+    >
+      キャンセル
+    </button>
 
   </div>
 
 
-  <!-- ホーム画面 -->
-  <div id="homeScreen" class="screen home-screen hidden">
+
+  <!-- =====================
+       ホーム画面
+  ====================== -->
+
+  <div
+    id="homeScreen"
+    class="screen home-screen hidden"
+  >
 
     <div class="status-bar">
-      <span>23:47</span>
-      <span>●●●　📶　🔋</span>
+
+      <span>
+        23:47
+      </span>
+
+      <span>
+        ●●●　📶　🔋
+      </span>
+
     </div>
+
 
     <div class="home-content">
 
-      <div class="app" onclick="openApp('messages')">
-        <div class="app-icon messages">💬</div>
-        <div>メッセージ</div>
+
+      <!-- メッセージ -->
+
+      <div
+        class="app"
+        onclick="openApp('messages')"
+      >
+
+        <div class="app-icon messages">
+          💬
+        </div>
+
+        <div>
+          メッセージ
+        </div>
+
       </div>
 
-      <div class="app" onclick="openApp('photos')">
-        <div class="app-icon photos">📷</div>
-        <div>写真</div>
+
+      <!-- 写真 -->
+
+      <div
+        class="app"
+        onclick="openApp('photos')"
+      >
+
+        <div class="app-icon photos">
+          📷
+        </div>
+
+        <div>
+          写真
+        </div>
+
       </div>
 
-      <div class="app" onclick="openApp('memo')">
-        <div class="app-icon memo">📝</div>
-        <div>メモ</div>
+
+      <!-- メモ -->
+
+      <div
+        class="app"
+        onclick="openApp('memo')"
+      >
+
+        <div class="app-icon memo">
+          📝
+        </div>
+
+        <div>
+          メモ
+        </div>
+
       </div>
 
-      <div class="app" onclick="openApp('calls')">
-        <div class="app-icon calls">📞</div>
-        <div>通話履歴</div>
+
+      <!-- 通話履歴 -->
+
+      <div
+        class="app"
+        onclick="openApp('calls')"
+      >
+
+        <div class="app-icon calls">
+          📞
+        </div>
+
+        <div>
+          通話履歴
+        </div>
+
       </div>
 
-      <div class="app" onclick="openApp('map')">
-        <div class="app-icon map">🗺️</div>
-        <div>マップ</div>
+
+      <!-- マップ -->
+
+      <div
+        class="app"
+        onclick="openApp('map')"
+      >
+
+        <div class="app-icon map">
+          🗺️
+        </div>
+
+        <div>
+          マップ
+        </div>
+
       </div>
+
+
+      <!-- 設定 -->
 
       <div class="app">
-        <div class="app-icon settings">⚙️</div>
-        <div>設定</div>
+
+        <div class="app-icon settings">
+          ⚙️
+        </div>
+
+        <div>
+          設定
+        </div>
+
       </div>
 
     </div>
 
+
+
+    <!-- Dock -->
+
     <div class="dock">
+
       <div>📱</div>
       <div>🌐</div>
       <div>🎵</div>
       <div>📧</div>
+
     </div>
 
   </div>
 
 
-  <!-- アプリ画面 -->
-  <div id="appScreen" class="screen app-screen hidden">
+
+  <!-- =====================
+       アプリ画面
+  ====================== -->
+
+  <div
+    id="appScreen"
+    class="screen app-screen hidden"
+  >
 
     <div class="app-header">
-      <button onclick="backHome()">‹</button>
+
+      <button onclick="backHome()">
+        ‹
+      </button>
+
       <span id="appTitle"></span>
+
     </div>
 
-    <div id="appContent" class="app-content"></div>
+
+    <div
+      id="appContent"
+      class="app-content"
+    ></div>
 
   </div>
 
+
 </div>
+
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
