@@ -216,12 +216,146 @@ function openApp(app) {
         昨日
       </div>
 
-    </div>
+      
 
-  `;
+    </function openConversation(person) {
+
+  const title = document.getElementById("appTitle");
+  const content = document.getElementById("appContent");
+
+  title.textContent = person;
+
+
+  // りんたろう
+  if (person === "りんたろう") {
+
+    content.innerHTML = `
+
+      <div class="chat-date">
+        8月7日
+      </div>
+
+      <div class="message received">
+        <div class="message-name">
+          りんたろう
+        </div>
+
+        <div class="message-bubble">
+          あの車の件なんだけど、
+          誰にも言ってないよ。
+        </div>
+      </div>
+
+
+      <div class="message sent">
+
+        <div class="message-bubble">
+          本当に？
+        </div>
+
+      </div>
+
+
+      <div class="message received">
+
+        <div class="message-name">
+          りんたろう
+        </div>
+
+        <div class="message-bubble">
+          大丈夫。俺に任せて。
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  // ゆうき
+  if (person === "ゆうき") {
+
+    content.innerHTML = `
+
+      <div class="chat-date">
+        8月7日
+      </div>
+
+      <div class="message received">
+
+        <div class="message-name">
+          ゆうき
+        </div>
+
+        <div class="message-bubble">
+          車のこと、知ってる？
+        </div>
+
+      </div>
+
+
+      <div class="message sent">
+
+        <div class="message-bubble">
+          何のこと？
+        </div>
+
+      </div>
+
+
+      <div class="message received">
+
+        <div class="message-name">
+          ゆうき
+        </div>
+
+        <div class="message-bubble">
+          昨日、駐車場で見た。
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  // かなと
+  if (person === "かなと") {
+
+    content.innerHTML = `
+
+      <div class="chat-date">
+        8月6日
+      </div>
+
+      <div class="message received">
+
+        <div class="message-name">
+          かなと
+        </div>
+
+        <div class="message-bubble">
+          明日の予定どうする？
+        </div>
+
+      </div>
+
+
+      <div class="message sent">
+
+        <div class="message-bubble">
+          いつも通りで大丈夫！
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
 }
-
-
   // 写真
   if (app === "photos") {
 
