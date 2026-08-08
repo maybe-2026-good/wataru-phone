@@ -2,48 +2,74 @@
 // 設定
 // =====================
 
-// ここを好きな4桁に変更
+// 4桁のパスコード
 const CORRECT_PASSCODE = "4827";
 
 let enteredCode = "";
 
 
+
 // =====================
-// ロック画面 → パスコード
+// ロック画面
 // =====================
 
-const lockScreen = document.getElementById("lockScreen");
+const lockScreen =
+  document.getElementById("lockScreen");
 
 let startY = 0;
 
-// 指を置いた場所
-lockScreen.addEventListener("touchstart", function(e) {
-  startY = e.touches[0].clientY;
-}, { passive: true });
 
-// 指を離した場所
-lockScreen.addEventListener("touchend", function(e) {
+// 指を置いたとき
+lockScreen.addEventListener(
+  "touchstart",
+  function(e) {
 
-  const endY = e.changedTouches[0].clientY;
+    startY =
+      e.touches[0].clientY;
 
-  // 上に50px以上スワイプ
-  if (startY - endY > 50) {
-    showPasscode();
-  }
-
-}, { passive: true });
+  },
+  { passive: true }
+);
 
 
+// 指を離したとき
+lockScreen.addEventListener(
+  "touchend",
+  function(e) {
+
+    const endY =
+      e.changedTouches[0].clientY;
+
+    // 上に50px以上スワイプ
+    if (startY - endY > 50) {
+
+      showPasscode();
+
+    }
+
+  },
+  { passive: true }
+);
+
+
+
+// =====================
 // パスコード画面を表示
+// =====================
+
 function showPasscode() {
 
-  document.getElementById("lockScreen")
+  document
+    .getElementById("lockScreen")
     .classList.add("hidden");
 
-  document.getElementById("passcodeScreen")
+
+  document
+    .getElementById("passcodeScreen")
     .classList.remove("hidden");
 
 }
+
 
 
 // =====================
@@ -52,89 +78,155 @@ function showPasscode() {
 
 function pressKey(number) {
 
-  if (enteredCode.length >= 4) return;
+  if (enteredCode.length >= 4) {
+    return;
+  }
+
 
   enteredCode += number;
 
   updateDots();
 
+
   if (enteredCode.length === 4) {
 
-    setTimeout(checkPasscode, 200);
+    setTimeout(
+      checkPasscode,
+      200
+    );
 
   }
 
 }
 
 
+
 function deleteKey() {
 
-  enteredCode = enteredCode.slice(0, -1);
+  enteredCode =
+    enteredCode.slice(0, -1);
 
   updateDots();
 
 }
 
 
+
 function updateDots() {
 
-  const dots = document.querySelectorAll(".dots span");
+  const dots =
+    document.querySelectorAll(
+      ".dots span"
+    );
 
-  dots.forEach((dot, index) => {
 
-    if (index < enteredCode.length) {
-      dot.classList.add("filled");
-    } else {
-      dot.classList.remove("filled");
+  dots.forEach(
+    (dot, index) => {
+
+      if (
+        index <
+        enteredCode.length
+      ) {
+
+        dot.classList.add(
+          "filled"
+        );
+
+      } else {
+
+        dot.classList.remove(
+          "filled"
+        );
+
+      }
+
     }
-
-  });
+  );
 
 }
 
 
+
 function checkPasscode() {
 
-  if (enteredCode === CORRECT_PASSCODE) {
+  if (
+    enteredCode ===
+    CORRECT_PASSCODE
+  ) {
 
-    document.getElementById("passcodeScreen")
+
+    document
+      .getElementById(
+        "passcodeScreen"
+      )
       .classList.add("hidden");
 
-    document.getElementById("homeScreen")
+
+    document
+      .getElementById(
+        "homeScreen"
+      )
       .classList.remove("hidden");
+
 
     enteredCode = "";
 
     updateDots();
 
+
   } else {
 
-    document.getElementById("errorMessage")
-      .textContent = "パスコードが違います";
 
-    setTimeout(() => {
+    document
+      .getElementById(
+        "errorMessage"
+      )
+      .textContent =
+      "パスコードが違います";
 
-      enteredCode = "";
 
-      updateDots();
+    setTimeout(
+      function() {
 
-      document.getElementById("errorMessage")
-        .textContent = "";
+        enteredCode = "";
 
-    }, 700);
+        updateDots();
+
+
+        document
+          .getElementById(
+            "errorMessage"
+          )
+          .textContent = "";
+
+      },
+      700
+    );
 
   }
 
 }
 
 
+
+// パスコード画面から
+// ロック画面に戻る
+
 function backToLock() {
 
-  document.getElementById("passcodeScreen")
+  document
+    .getElementById(
+      "passcodeScreen"
+    )
     .classList.add("hidden");
 
-  document.getElementById("lockScreen")
+
+  document
+    .getElementById(
+      "lockScreen"
+    )
     .classList.remove("hidden");
+
 
   enteredCode = "";
 
@@ -143,20 +235,38 @@ function backToLock() {
 }
 
 
+
 // =====================
 // アプリを開く
 // =====================
 
 function openApp(app) {
 
-  document.getElementById("homeScreen")
+  document
+    .getElementById(
+      "homeScreen"
+    )
     .classList.add("hidden");
 
-  document.getElementById("appScreen")
+
+  document
+    .getElementById(
+      "appScreen"
+    )
     .classList.remove("hidden");
 
-  const title = document.getElementById("appTitle");
-  const content = document.getElementById("appContent");
+
+  const title =
+    document.getElementById(
+      "appTitle"
+    );
+
+
+  const content =
+    document.getElementById(
+      "appContent"
+    );
+
 
 
   // =====================
@@ -165,14 +275,23 @@ function openApp(app) {
 
   if (app === "messages") {
 
-    title.textContent = "メッセージ";
+    title.textContent =
+      "メッセージ";
+
 
     content.innerHTML = `
 
-      <div class="conversation"
-           onclick="openConversation('りんたろう')">
+      <div
+        class="conversation"
+        onclick="
+          openConversation('りんたろう')
+        "
+      >
 
-        <div class="conversation-icon">👤</div>
+        <div class="conversation-icon">
+          👤
+        </div>
+
 
         <div class="conversation-info">
 
@@ -186,6 +305,7 @@ function openApp(app) {
 
         </div>
 
+
         <div class="conversation-time">
           18:42
         </div>
@@ -193,10 +313,18 @@ function openApp(app) {
       </div>
 
 
-      <div class="conversation"
-           onclick="openConversation('ゆうき')">
 
-        <div class="conversation-icon">👤</div>
+      <div
+        class="conversation"
+        onclick="
+          openConversation('ゆうき')
+        "
+      >
+
+        <div class="conversation-icon">
+          👤
+        </div>
+
 
         <div class="conversation-info">
 
@@ -210,6 +338,7 @@ function openApp(app) {
 
         </div>
 
+
         <div class="conversation-time">
           17:15
         </div>
@@ -217,10 +346,18 @@ function openApp(app) {
       </div>
 
 
-      <div class="conversation"
-           onclick="openConversation('かなと')">
 
-        <div class="conversation-icon">👤</div>
+      <div
+        class="conversation"
+        onclick="
+          openConversation('かなと')
+        "
+      >
+
+        <div class="conversation-icon">
+          👤
+        </div>
+
 
         <div class="conversation-info">
 
@@ -234,6 +371,7 @@ function openApp(app) {
 
         </div>
 
+
         <div class="conversation-time">
           昨日
         </div>
@@ -245,13 +383,16 @@ function openApp(app) {
   }
 
 
+
   // =====================
   // 写真
   // =====================
 
   if (app === "photos") {
 
-    title.textContent = "写真";
+    title.textContent =
+      "写真";
+
 
     content.innerHTML = `
 
@@ -268,24 +409,35 @@ function openApp(app) {
   }
 
 
+
   // =====================
   // メモ
   // =====================
 
   if (app === "memo") {
 
-    title.textContent = "メモ";
+    title.textContent =
+      "メモ";
+
 
     content.innerHTML = `
 
       <div class="memo">
 
-        <strong>8月7日</strong><br><br>
+        <strong>
+          8月7日
+        </strong>
+
+        <br><br>
 
         車を使う。<br>
+
         ↓<br>
+
         18:30　駐車場<br>
+
         ↓<br>
+
         19:10　帰宅
 
       </div>
@@ -295,23 +447,31 @@ function openApp(app) {
   }
 
 
+
   // =====================
   // 通話履歴
   // =====================
 
   if (app === "calls") {
 
-    title.textContent = "通話履歴";
+    title.textContent =
+      "通話履歴";
+
 
     content.innerHTML = `
 
-      <p>📞 ゆうき　18:31</p>
+      <p>
+        📞 ゆうき　18:31
+      </p>
 
-      <p>📞 りんたろう　18:54</p>
+      <p>
+        📞 りんたろう　18:54
+      </p>
 
     `;
 
   }
+
 
 
   // =====================
@@ -320,7 +480,9 @@ function openApp(app) {
 
   if (app === "map") {
 
-    title.textContent = "マップ";
+    title.textContent =
+      "マップ";
+
 
     content.innerHTML = `
 
@@ -339,24 +501,37 @@ function openApp(app) {
 }
 
 
+
 // =====================
-// メッセージの会話を開く
+// 個人のメッセージ
 // =====================
 
 function openConversation(person) {
 
-  const title = document.getElementById("appTitle");
+  const title =
+    document.getElementById(
+      "appTitle"
+    );
 
-  const content = document.getElementById("appContent");
 
-  title.textContent = person;
+  const content =
+    document.getElementById(
+      "appContent"
+    );
+
+
+  title.textContent =
+    person;
+
 
 
   // =====================
   // りんたろう
   // =====================
 
-  if (person === "りんたろう") {
+  if (
+    person === "りんたろう"
+  ) {
 
     content.innerHTML = `
 
@@ -405,11 +580,14 @@ function openConversation(person) {
   }
 
 
+
   // =====================
   // ゆうき
   // =====================
 
-  if (person === "ゆうき") {
+  if (
+    person === "ゆうき"
+  ) {
 
     content.innerHTML = `
 
@@ -457,11 +635,14 @@ function openConversation(person) {
   }
 
 
+
   // =====================
   // かなと
   // =====================
 
-  if (person === "かなと") {
+  if (
+    person === "かなと"
+  ) {
 
     content.innerHTML = `
 
@@ -498,16 +679,152 @@ function openConversation(person) {
 }
 
 
+
+// =====================
+// 個人トーク
+// → メッセージ一覧
+// =====================
+
+function backToMessages() {
+
+  const title =
+    document.getElementById(
+      "appTitle"
+    );
+
+
+  const content =
+    document.getElementById(
+      "appContent"
+    );
+
+
+  title.textContent =
+    "メッセージ";
+
+
+  content.innerHTML = `
+
+    <div
+      class="conversation"
+      onclick="
+        openConversation('りんたろう')
+      "
+    >
+
+      <div class="conversation-icon">
+        👤
+      </div>
+
+
+      <div class="conversation-info">
+
+        <div class="conversation-name">
+          りんたろう
+        </div>
+
+        <div class="conversation-preview">
+          またあの件なんだけど…
+        </div>
+
+      </div>
+
+
+      <div class="conversation-time">
+        18:42
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="conversation"
+      onclick="
+        openConversation('ゆうき')
+      "
+    >
+
+      <div class="conversation-icon">
+        👤
+      </div>
+
+
+      <div class="conversation-info">
+
+        <div class="conversation-name">
+          ゆうき
+        </div>
+
+        <div class="conversation-preview">
+          車のこと、知ってる？
+        </div>
+
+      </div>
+
+
+      <div class="conversation-time">
+        17:15
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="conversation"
+      onclick="
+        openConversation('かなと')
+      "
+    >
+
+      <div class="conversation-icon">
+        👤
+      </div>
+
+
+      <div class="conversation-info">
+
+        <div class="conversation-name">
+          かなと
+        </div>
+
+        <div class="conversation-preview">
+          明日の予定どうする？
+        </div>
+
+      </div>
+
+
+      <div class="conversation-time">
+        昨日
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+
 // =====================
 // ホームに戻る
 // =====================
 
 function backHome() {
 
-  document.getElementById("appScreen")
+  document
+    .getElementById(
+      "appScreen"
+    )
     .classList.add("hidden");
 
-  document.getElementById("homeScreen")
+
+  document
+    .getElementById(
+      "homeScreen"
+    )
     .classList.remove("hidden");
 
 }
