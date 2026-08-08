@@ -1,30 +1,51 @@
 * {
   box-sizing: border-box;
+
   -webkit-tap-highlight-color: transparent;
 }
 
+
 body {
+
   margin: 0;
+
   background: #111;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    sans-serif;
+
   color: white;
+
   overflow: hidden;
 }
 
+
 .phone {
+
   width: 100vw;
   height: 100vh;
+
   position: relative;
+
   overflow: hidden;
+
   background: #000;
 }
 
+
 .screen {
+
   position: absolute;
+
   inset: 0;
+
   width: 100%;
   height: 100%;
 }
+
 
 .hidden {
   display: none;
@@ -36,16 +57,25 @@ body {
 ===================== */
 
 .status-bar {
+
   position: absolute;
+
   top: 0;
   left: 0;
+
   width: 100%;
+
   padding: 14px 22px;
+
   display: flex;
+
   justify-content: space-between;
+
   font-size: 14px;
+
   z-index: 10;
 }
+
 
 
 /* =====================
@@ -53,88 +83,153 @@ body {
 ===================== */
 
 .lock-screen {
+
   background:
+
     linear-gradient(
       rgba(0,0,0,0.15),
       rgba(0,0,0,0.45)
     ),
+
     url("wallpaper.jpg");
 
   background-size: cover;
+
   background-position: center;
 }
 
+
 .lock-content {
+
   text-align: center;
+
   padding-top: 70px;
 }
 
+
 .lock-icon {
+
   font-size: 20px;
+
   margin-bottom: 10px;
 }
 
+
 .time {
+
   font-size: 76px;
+
   font-weight: 300;
+
   letter-spacing: -4px;
 }
 
+
 .date {
+
   font-size: 20px;
+
   margin-top: -5px;
 }
 
+
 .notification {
+
   width: calc(100% - 30px);
+
   margin: 45px auto 0;
+
   padding: 15px 18px;
+
   border-radius: 18px;
+
   background: rgba(50,50,50,0.65);
+
   backdrop-filter: blur(20px);
+
   text-align: left;
 }
 
+
 .notification-title {
+
   font-weight: bold;
+
   margin-bottom: 5px;
 }
 
+
 .notification-text {
+
   font-size: 14px;
+
   opacity: 0.85;
 }
 
+
 .swipe-area {
+
   position: absolute;
-  bottom: 100px;
+
+  bottom: 110px;
+
   width: 100%;
+
   text-align: center;
-  font-size: 13px;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: white;
+
+  text-shadow:
+    0 1px 4px rgba(0,0,0,0.8);
+
   opacity: 0.9;
+
+  cursor: pointer;
 }
 
+
 .swipe-arrow {
-  font-size: 25px;
+
+  font-size: 28px;
+
+  margin-bottom: 4px;
+
   animation: swipe 1.5s infinite;
 }
 
+
 @keyframes swipe {
+
   0% {
+
     transform: translateY(8px);
+
     opacity: 0.4;
+
   }
 
   50% {
+
     transform: translateY(-5px);
+
     opacity: 1;
+
   }
 
   100% {
+
     transform: translateY(8px);
+
     opacity: 0.4;
+
   }
+
 }
+
 
 
 /* =====================
@@ -142,83 +237,154 @@ body {
 ===================== */
 
 .passcode-screen {
+
   background: #000;
+
   text-align: center;
 }
 
+
 .passcode-top {
+
   padding-top: 90px;
+
   font-size: 18px;
 }
 
+
 .small-lock {
+
   font-size: 22px;
+
   margin-bottom: 15px;
 }
 
+
+.forgot-password {
+
+  margin-top: 12px;
+
+  margin-bottom: 15px;
+
+  font-size: 13px;
+
+  color:
+    rgba(255,255,255,0.8);
+
+  line-height: 1.5;
+}
+
+
+.forgot-password span {
+
+  color: white;
+
+  font-weight: 500;
+}
+
+
 .dots {
+
   display: flex;
+
   justify-content: center;
+
   gap: 14px;
+
   margin-top: 20px;
 }
 
+
 .dots span {
+
   width: 12px;
   height: 12px;
-  border: 1px solid white;
+
+  border:
+    1px solid white;
+
   border-radius: 50%;
 }
 
+
 .dots span.filled {
+
   background: white;
 }
 
+
 #errorMessage {
+
   height: 20px;
+
   margin-top: 12px;
+
   color: #ff453a;
+
   font-size: 13px;
 }
 
+
 .keypad {
+
   position: absolute;
+
   bottom: 90px;
+
   left: 50%;
-  transform: translateX(-50%);
+
+  transform:
+    translateX(-50%);
 
   display: grid;
-  grid-template-columns: repeat(3, 75px);
+
+  grid-template-columns:
+    repeat(3, 75px);
+
   gap: 14px;
 }
 
+
 .keypad button {
+
   width: 75px;
   height: 75px;
+
   border-radius: 50%;
+
   border: none;
 
   background: #333;
+
   color: white;
 
   font-size: 30px;
 }
 
+
 .keypad button:active {
+
   background: #666;
 }
 
+
 .cancel {
+
   position: absolute;
+
   bottom: 25px;
+
   left: 20px;
 
   background: none;
+
   border: none;
+
   color: white;
 
   font-size: 16px;
 }
+
 
 
 /* =====================
@@ -226,51 +392,75 @@ body {
 ===================== */
 
 .home-screen {
+
   background:
+
     linear-gradient(
       rgba(0,0,0,0.15),
       rgba(0,0,0,0.4)
     ),
+
     url("wallpaper.jpg");
 
   background-size: cover;
+
   background-position: center;
 }
 
+
 .home-content {
-  padding: 100px 25px 100px;
+
+  padding:
+    100px 25px 100px;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
   gap: 28px 18px;
 }
 
+
 .app {
+
   text-align: center;
+
   font-size: 11px;
+
+  cursor: pointer;
 }
 
+
 .app-icon {
+
   width: 58px;
   height: 58px;
 
-  margin: auto auto 6px;
+  margin:
+    auto auto 6px;
 
   border-radius: 14px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   font-size: 30px;
 
-  background: rgba(255,255,255,0.9);
+  background:
+    rgba(255,255,255,0.9);
 }
 
+
 .dock {
+
   position: absolute;
 
   bottom: 20px;
+
   left: 15px;
   right: 15px;
 
@@ -278,15 +468,22 @@ body {
 
   border-radius: 25px;
 
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(20px);
+  background:
+    rgba(255,255,255,0.25);
+
+  backdrop-filter:
+    blur(20px);
 
   display: flex;
+
   align-items: center;
-  justify-content: space-around;
+
+  justify-content:
+    space-around;
 
   font-size: 30px;
 }
+
 
 
 /* =====================
@@ -294,75 +491,236 @@ body {
 ===================== */
 
 .app-screen {
+
   background: #f5f5f5;
+
   color: #111;
 }
 
+
 .app-header {
+
   height: 70px;
-  padding: 30px 15px 0;
+
+  padding:
+    30px 15px 0;
 
   display: flex;
+
   align-items: center;
 
-  border-bottom: 1px solid #ddd;
+  border-bottom:
+    1px solid #ddd;
 
   font-weight: bold;
 }
 
+
 .app-header button {
+
   border: none;
+
   background: none;
 
   font-size: 32px;
+
   margin-right: 10px;
+
+  cursor: pointer;
 }
 
+
 .app-content {
+
   padding: 20px;
 }
 
 
-/* メッセージ */
+
+/* =====================
+   メッセージ一覧
+===================== */
+
+.conversation {
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 14px 5px;
+
+  border-bottom:
+    1px solid #ddd;
+
+  cursor: pointer;
+}
+
+
+.conversation:active {
+
+  background: #e5e5e5;
+}
+
+
+.conversation-icon {
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: #ddd;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 25px;
+
+  margin-right: 12px;
+}
+
+
+.conversation-info {
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.conversation-name {
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+
+.conversation-preview {
+
+  margin-top: 4px;
+
+  font-size: 13px;
+
+  color: #777;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+.conversation-time {
+
+  font-size: 11px;
+
+  color: #888;
+}
+
+
+
+/* =====================
+   個人トーク
+===================== */
+
+.chat-date {
+
+  text-align: center;
+
+  font-size: 12px;
+
+  color: #888;
+
+  margin:
+    10px 0 20px;
+}
+
 
 .message {
+
   margin-bottom: 15px;
+
+  display: flex;
+
+  flex-direction: column;
 }
+
+
+.message.received {
+
+  align-items: flex-start;
+}
+
+
+.message.sent {
+
+  align-items: flex-end;
+}
+
 
 .message-name {
-  font-size: 12px;
+
+  font-size: 11px;
+
   color: #777;
+
+  margin-bottom: 3px;
 }
 
-.message-bubble {
-  display: inline-block;
 
-  padding: 10px 14px;
+.message-bubble {
+
+  max-width: 75%;
+
+  padding:
+    10px 14px;
 
   border-radius: 18px;
 
   background: #ddd;
 
-  margin-top: 4px;
-
-  max-width: 85%;
+  line-height: 1.5;
 }
 
 
-/* メモ */
+.message.sent
+.message-bubble {
+
+  background: #aee6a3;
+}
+
+
+
+/* =====================
+   メモ
+===================== */
 
 .memo {
+
   background: #fff;
+
   padding: 18px;
+
   border-radius: 12px;
+
   line-height: 1.7;
 }
 
 
-/* 写真 */
+
+/* =====================
+   写真・マップ
+===================== */
 
 .fake-photo {
+
   width: 100%;
+
   height: 180px;
 
   background: #ddd;
@@ -370,113 +728,10 @@ body {
   border-radius: 12px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   font-size: 50px;
-}
-
-.forgot-password {
-  margin-top: 12px;
-  margin-bottom: 15px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
-}
-
-.forgot-password span {
-  color: white;
-  font-weight: 500;
-}
-
-.conversation {
-  display: flex;
-  align-items: center;
-  padding: 14px 5px;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-}
-
-.conversation:active {
-  background: #e5e5e5;
-}
-
-.conversation-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #ddd;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 25px;
-  margin-right: 12px;
-}
-
-.conversation-info {
-  flex: 1;
-}
-
-.conversation-name {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.conversation-preview {
-  margin-top: 4px;
-  font-size: 13px;
-  color: #777;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.conversation-time {
-  font-size: 11px;
-  color: #888;
-}
-
-
-/* トーク画面 */
-
-.chat-date {
-  text-align: center;
-  font-size: 12px;
-  color: #888;
-  margin: 10px 0 20px;
-}
-
-.message {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.message.received {
-  align-items: flex-start;
-}
-
-.message.sent {
-  align-items: flex-end;
-}
-
-.message-name {
-  font-size: 11px;
-  color: #777;
-  margin-bottom: 3px;
-}
-
-.message-bubble {
-  max-width: 75%;
-  padding: 10px 14px;
-  border-radius: 18px;
-  background: #ddd;
-  line-height: 1.5;
-}
-
-.message.sent .message-bubble {
-  background: #aee6a3;
 }
