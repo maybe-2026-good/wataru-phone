@@ -158,38 +158,68 @@ function openApp(app) {
   // メッセージ
   if (app === "messages") {
 
-    title.textContent = "メッセージ";
+  title.textContent = "メッセージ";
 
-    content.innerHTML = `
+  content.innerHTML = `
 
-      <div class="message">
+    <div class="conversation"
+         onclick="openConversation('りんたろう')">
 
-        <div class="message-name">
-          ゆうき
+      <div class="conversation-icon">👤</div>
+
+      <div class="conversation-info">
+        <div class="conversation-name">りんたろう</div>
+        <div class="conversation-preview">
+          またあの件なんだけど…
         </div>
-
-        <div class="message-bubble">
-          この前の車の件、どうする？
-        </div>
-
       </div>
 
-
-      <div class="message">
-
-        <div class="message-name">
-          わたる
-        </div>
-
-        <div class="message-bubble">
-          その話は誰にも言わないで。
-        </div>
-
+      <div class="conversation-time">
+        18:42
       </div>
 
-    `;
+    </div>
 
-  }
+
+    <div class="conversation"
+         onclick="openConversation('ゆうき')">
+
+      <div class="conversation-icon">👤</div>
+
+      <div class="conversation-info">
+        <div class="conversation-name">ゆうき</div>
+        <div class="conversation-preview">
+          車のこと、知ってる？
+        </div>
+      </div>
+
+      <div class="conversation-time">
+        17:15
+      </div>
+
+    </div>
+
+
+    <div class="conversation"
+         onclick="openConversation('かなと')">
+
+      <div class="conversation-icon">👤</div>
+
+      <div class="conversation-info">
+        <div class="conversation-name">かなと</div>
+        <div class="conversation-preview">
+          明日の予定どうする？
+        </div>
+      </div>
+
+      <div class="conversation-time">
+        昨日
+      </div>
+
+    </div>
+
+  `;
+}
 
 
   // 写真
