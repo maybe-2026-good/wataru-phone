@@ -2,7 +2,7 @@
 // 設定
 // =====================
 
-// ここを好きな4桁に変更できる
+// ここを好きな4桁に変更
 const CORRECT_PASSCODE = "4827";
 
 let enteredCode = "";
@@ -16,21 +16,25 @@ const lockScreen = document.getElementById("lockScreen");
 
 let startY = 0;
 
+// 指を置いた場所
 lockScreen.addEventListener("touchstart", function(e) {
   startY = e.touches[0].clientY;
-});
+}, { passive: true });
 
+// 指を離した場所
 lockScreen.addEventListener("touchend", function(e) {
 
   const endY = e.changedTouches[0].clientY;
 
-  // 上方向にスワイプ
+  // 上に50px以上スワイプ
   if (startY - endY > 50) {
     showPasscode();
   }
 
-});
+}, { passive: true });
 
+
+// パスコード画面を表示
 function showPasscode() {
 
   document.getElementById("lockScreen")
@@ -140,7 +144,7 @@ function backToLock() {
 
 
 // =====================
-// アプリ
+// アプリを開く
 // =====================
 
 function openApp(app) {
@@ -155,78 +159,203 @@ function openApp(app) {
   const content = document.getElementById("appContent");
 
 
+  // =====================
   // メッセージ
+  // =====================
+
   if (app === "messages") {
 
-  title.textContent = "メッセージ";
+    title.textContent = "メッセージ";
 
-  content.innerHTML = `
+    content.innerHTML = `
 
-    <div class="conversation"
-         onclick="openConversation('りんたろう')">
+      <div class="conversation"
+           onclick="openConversation('りんたろう')">
 
-      <div class="conversation-icon">👤</div>
+        <div class="conversation-icon">👤</div>
 
-      <div class="conversation-info">
-        <div class="conversation-name">りんたろう</div>
-        <div class="conversation-preview">
-          またあの件なんだけど…
+        <div class="conversation-info">
+
+          <div class="conversation-name">
+            りんたろう
+          </div>
+
+          <div class="conversation-preview">
+            またあの件なんだけど…
+          </div>
+
         </div>
-      </div>
 
-      <div class="conversation-time">
-        18:42
-      </div>
-
-    </div>
-
-
-    <div class="conversation"
-         onclick="openConversation('ゆうき')">
-
-      <div class="conversation-icon">👤</div>
-
-      <div class="conversation-info">
-        <div class="conversation-name">ゆうき</div>
-        <div class="conversation-preview">
-          車のこと、知ってる？
+        <div class="conversation-time">
+          18:42
         </div>
+
       </div>
 
-      <div class="conversation-time">
-        17:15
-      </div>
 
-    </div>
+      <div class="conversation"
+           onclick="openConversation('ゆうき')">
 
+        <div class="conversation-icon">👤</div>
 
-    <div class="conversation"
-         onclick="openConversation('かなと')">
+        <div class="conversation-info">
 
-      <div class="conversation-icon">👤</div>
+          <div class="conversation-name">
+            ゆうき
+          </div>
 
-      <div class="conversation-info">
-        <div class="conversation-name">かなと</div>
-        <div class="conversation-preview">
-          明日の予定どうする？
+          <div class="conversation-preview">
+            車のこと、知ってる？
+          </div>
+
         </div>
+
+        <div class="conversation-time">
+          17:15
+        </div>
+
       </div>
 
-      <div class="conversation-time">
-        昨日
+
+      <div class="conversation"
+           onclick="openConversation('かなと')">
+
+        <div class="conversation-icon">👤</div>
+
+        <div class="conversation-info">
+
+          <div class="conversation-name">
+            かなと
+          </div>
+
+          <div class="conversation-preview">
+            明日の予定どうする？
+          </div>
+
+        </div>
+
+        <div class="conversation-time">
+          昨日
+        </div>
+
       </div>
 
-      
+    `;
 
-    </function openConversation(person) {
+  }
+
+
+  // =====================
+  // 写真
+  // =====================
+
+  if (app === "photos") {
+
+    title.textContent = "写真";
+
+    content.innerHTML = `
+
+      <div class="fake-photo">
+        🚗
+      </div>
+
+      <p>
+        8月7日　18:42
+      </p>
+
+    `;
+
+  }
+
+
+  // =====================
+  // メモ
+  // =====================
+
+  if (app === "memo") {
+
+    title.textContent = "メモ";
+
+    content.innerHTML = `
+
+      <div class="memo">
+
+        <strong>8月7日</strong><br><br>
+
+        車を使う。<br>
+        ↓<br>
+        18:30　駐車場<br>
+        ↓<br>
+        19:10　帰宅
+
+      </div>
+
+    `;
+
+  }
+
+
+  // =====================
+  // 通話履歴
+  // =====================
+
+  if (app === "calls") {
+
+    title.textContent = "通話履歴";
+
+    content.innerHTML = `
+
+      <p>📞 ゆうき　18:31</p>
+
+      <p>📞 りんたろう　18:54</p>
+
+    `;
+
+  }
+
+
+  // =====================
+  // マップ
+  // =====================
+
+  if (app === "map") {
+
+    title.textContent = "マップ";
+
+    content.innerHTML = `
+
+      <div class="fake-photo">
+        🗺️
+      </div>
+
+      <p>
+        最後に確認された場所
+      </p>
+
+    `;
+
+  }
+
+}
+
+
+// =====================
+// メッセージの会話を開く
+// =====================
+
+function openConversation(person) {
 
   const title = document.getElementById("appTitle");
+
   const content = document.getElementById("appContent");
 
   title.textContent = person;
 
 
+  // =====================
   // りんたろう
+  // =====================
+
   if (person === "りんたろう") {
 
     content.innerHTML = `
@@ -235,15 +364,18 @@ function openApp(app) {
         8月7日
       </div>
 
+
       <div class="message received">
+
         <div class="message-name">
           りんたろう
         </div>
 
         <div class="message-bubble">
-          あの車の件なんだけど、
+          あの車の件なんだけど、<br>
           誰にも言ってないよ。
         </div>
+
       </div>
 
 
@@ -273,7 +405,10 @@ function openApp(app) {
   }
 
 
+  // =====================
   // ゆうき
+  // =====================
+
   if (person === "ゆうき") {
 
     content.innerHTML = `
@@ -281,6 +416,7 @@ function openApp(app) {
       <div class="chat-date">
         8月7日
       </div>
+
 
       <div class="message received">
 
@@ -321,7 +457,10 @@ function openApp(app) {
   }
 
 
+  // =====================
   // かなと
+  // =====================
+
   if (person === "かなと") {
 
     content.innerHTML = `
@@ -329,6 +468,7 @@ function openApp(app) {
       <div class="chat-date">
         8月6日
       </div>
+
 
       <div class="message received">
 
@@ -356,86 +496,11 @@ function openApp(app) {
   }
 
 }
-  // 写真
-  if (app === "photos") {
-
-    title.textContent = "写真";
-
-    content.innerHTML = `
-
-      <div class="fake-photo">
-        🚗
-      </div>
-
-      <p>
-        8月7日　18:42
-      </p>
-
-    `;
-
-  }
 
 
-  // メモ
-  if (app === "memo") {
-
-    title.textContent = "メモ";
-
-    content.innerHTML = `
-
-      <div class="memo">
-
-        <strong>8月7日</strong><br><br>
-
-        車を使う。<br>
-        ↓<br>
-        18:30　駐車場<br>
-        ↓<br>
-        19:10　帰宅
-
-      </div>
-
-    `;
-
-  }
-
-
-  // 通話履歴
-  if (app === "calls") {
-
-    title.textContent = "通話履歴";
-
-    content.innerHTML = `
-
-      <p>📞 ゆうき　18:31</p>
-      <p>📞 りんたろう　18:54</p>
-
-    `;
-
-  }
-
-
-  // マップ
-  if (app === "map") {
-
-    title.textContent = "マップ";
-
-    content.innerHTML = `
-
-      <div class="fake-photo">
-        🗺️
-      </div>
-
-      <p>
-        最後に確認された場所
-      </p>
-
-    `;
-
-  }
-
-}
-
+// =====================
+// ホームに戻る
+// =====================
 
 function backHome() {
 
